@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orbit AI - Social Space for Young Creators</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="background-orb orb-one"></div>
+  <div class="background-orb orb-two"></div>
+
+  <main class="app-shell">
+    <section class="auth-shell" id="authScreen">
+      <div class="auth-copy">
+        <p class="eyebrow">Orbit AI</p>
+        <h1>Social media that helps teens create, study, and grow.</h1>
+        <p class="lead">
+          Login, post updates, track goals, and chat with an AI guide that helps you stay productive
+          while still feeling social.
+        </p>
+        <div class="mini-cards">
+          <article class="mini-card">
+            <h2>Safe social vibe</h2>
+            <p>Private circles, creator-first profiles, and less pressure than a normal feed.</p>
+          </article>
+          <article class="mini-card">
+            <h2>Built-in productivity</h2>
+            <p>Tasks, sprints, and progress streaks are part of the platform, not separate tools.</p>
+          </article>
+          <article class="mini-card">
+            <h2>AI assistant bot</h2>
+            <p>Get encouragement, study plans, post ideas, and daily check-ins from Orbit AI.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="auth-panel">
+        <div class="auth-tabs">
+          <button class="tab-button active" data-auth-tab="login">Login</button>
+          <button class="tab-button" data-auth-tab="signup">Create account</button>
+        </div>
+
+        <form id="loginForm" class="auth-form">
+          <label>
+            Username
+            <input type="text" id="loginUsername" placeholder="Enter your username" required>
+          </label>
+          <label>
+            Password
+            <input type="password" id="loginPassword" placeholder="Enter your password" required>
+          </label>
+          <button type="submit" class="primary-button full-width">Login to Orbit</button>
+        </form>
+
+        <form id="signupForm" class="auth-form hidden">
+          <label>
+            Full name
+            <input type="text" id="signupName" placeholder="Your name" required>
+          </label>
+          <label>
+            Username
+            <input type="text" id="signupUsername" placeholder="Pick a username" required>
+          </label>
+          <label>
+            Password
+            <input type="password" id="signupPassword" placeholder="Create a password" required>
+          </label>
+          <label>
+            Main vibe
+            <select id="signupVibe">
+              <option value="Creator">Creator</option>
+              <option value="Student">Student</option>
+              <option value="Builder">Builder</option>
+              <option value="Gamer">Gamer</option>
+            </select>
+          </label>
+          <button type="submit" class="primary-button full-width">Create your account</button>
+        </form>
+
+        <p class="status-text" id="authStatus">Create an account or login with one you already made in this browser.</p>
+      </div>
+    </section>
+
+    <section class="dashboard hidden" id="dashboard">
+      <aside class="sidebar">
+        <div class="brand-block">
+          <div class="logo-mark">O</div>
+          <div>
+            <p class="eyebrow">Orbit AI</p>
+            <h2>Dashboard</h2>
+          </div>
+        </div>
+
+        <div class="profile-card">
+          <div class="profile-avatar" id="profileAvatar">O</div>
+          <div>
+            <h3 id="profileName">User</h3>
+            <p id="profileMeta">@username</p>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <button class="nav-button active" data-view="feedView">Feed</button>
+          <button class="nav-button" data-view="assistantView">AI Assistant</button>
+          <button class="nav-button" data-view="goalsView">Goals</button>
+          <button class="nav-button" data-view="profileView">Profile</button>
+        </nav>
+
+        <div class="sidebar-card">
+          <p class="eyebrow">Daily streak</p>
+          <strong id="streakValue">0 days</strong>
+          <p>Stay active by posting or completing one goal each day.</p>
+        </div>
+
+        <button class="ghost-button full-width" id="logoutButton">Logout</button>
+      </aside>
+
+      <section class="content-panel">
+        <header class="top-header">
+          <div>
+            <p class="eyebrow">Live workspace</p>
+            <h2 id="welcomeTitle">Welcome back</h2>
+          </div>
+          <div class="top-stats">
+            <div>
+              <span>XP</span>
+              <strong id="xpValue">0</strong>
+            </div>
+            <div>
+              <span>Posts</span>
+              <strong id="postCount">0</strong>
+            </div>
+            <div>
+              <span>Goals done</span>
+              <strong id="goalCount">0</strong>
+            </div>
+          </div>
+        </header>
+
+        <section class="view active" id="feedView">
+          <div class="view-grid">
+            <div class="panel">
+              <div class="panel-head">
+                <div>
+                  <p class="eyebrow">Creator feed</p>
+                  <h3>Post your update</h3>
+                </div>
+                <span class="pill">Functional</span>
+              </div>
+              <form id="postForm" class="stack-form">
+                <input type="text" id="postTitle" placeholder="Title your post" required>
+                <textarea id="postContent" rows="4" placeholder="Share what you made, learned, or finished today." required></textarea>
+                <button type="submit" class="primary-button">Publish post</button>
+              </form>
+            </div>
+
+            <div class="panel highlight-panel">
+              <p class="eyebrow">Orbit AI tip</p>
+              <h3 id="feedTip">Posting progress gives you bonus XP.</h3>
+              <p id="feedTipBody">Try sharing one thing you created, one thing you learned, and one thing you want to improve tomorrow.</p>
+            </div>
+          </div>
+
+          <div class="panel feed-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Community</p>
+                <h3>Live feed</h3>
+              </div>
+            </div>
+            <div id="feedList" class="feed-list"></div>
+          </div>
+        </section>
+
+        <section class="view" id="assistantView">
+          <div class="panel assistant-shell">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Orbit AI</p>
+                <h3>Your assistant bot</h3>
+              </div>
+              <span class="pill mint">Online</span>
+            </div>
+            <div class="assistant-messages" id="assistantMessages"></div>
+            <form id="assistantForm" class="assistant-form">
+              <input type="text" id="assistantInput" placeholder="Ask for study help, post ideas, motivation, or planning..." required>
+              <button type="submit" class="primary-button">Send</button>
+            </form>
+          </div>
+        </section>
+
+        <section class="view" id="goalsView">
+          <div class="view-grid">
+            <div class="panel">
+              <div class="panel-head">
+                <div>
+                  <p class="eyebrow">Focus board</p>
+                  <h3>Add a goal</h3>
+                </div>
+              </div>
+              <form id="goalForm" class="stack-form">
+                <input type="text" id="goalInput" placeholder="Finish algebra worksheet, practice guitar, write 200 words..." required>
+                <button type="submit" class="primary-button">Add goal</button>
+              </form>
+            </div>
+
+            <div class="panel timer-panel">
+              <div class="panel-head">
+                <div>
+                  <p class="eyebrow">Sprint timer</p>
+                  <h3>Stay locked in</h3>
+                </div>
+              </div>
+              <div class="timer-ring" id="timerRing">
+                <div class="timer-center">
+                  <strong id="timerValue">12:00</strong>
+                  <span>focus sprint</span>
+                </div>
+              </div>
+              <div class="timer-controls">
+                <button class="primary-button" id="startTimer" type="button">Start sprint</button>
+                <button class="secondary-button" id="resetTimer" type="button">Reset</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Your goals</p>
+                <h3>Track progress</h3>
+              </div>
+            </div>
+            <div id="goalList" class="goal-list"></div>
+          </div>
+        </section>
+
+        <section class="view" id="profileView">
+          <div class="view-grid">
+            <div class="panel">
+              <div class="panel-head">
+                <div>
+                  <p class="eyebrow">Identity</p>
+                  <h3>Your profile</h3>
+                </div>
+              </div>
+              <div class="profile-summary">
+                <div class="profile-avatar large" id="profileAvatarLarge">O</div>
+                <div>
+                  <h3 id="summaryName">User</h3>
+                  <p id="summaryHandle">@username</p>
+                  <span class="pill" id="summaryVibe">Creator</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel highlight-panel">
+              <p class="eyebrow">Orbit AI reads your momentum</p>
+              <h3 id="profileInsight">You are building a healthy streak.</h3>
+              <p id="profileInsightBody">Come back tomorrow to keep it moving and turn your goals into visible progress.</p>
+            </div>
+          </div>
+        </section>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
